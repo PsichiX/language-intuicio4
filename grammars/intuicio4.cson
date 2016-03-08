@@ -1,0 +1,125 @@
+'scopeName': 'source.intuicio4'
+'fileTypes': [
+	'i4s'
+]
+'firstLineMatch': '^#!.*\\bintuicio'
+'name': 'Intuicio 4 Assembly'
+'patterns': [
+	{
+		'match': ':\\s*(\\*)*\\s*(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*((\\[)\\s*(\\b(-)?[0-9.]+\\b)\\s*(\\])?)?'
+		'captures':
+			'1':
+				'name': 'keyword.operator.intuicio4'
+			'2':
+				'name': 'storage.type.intuicio4'
+			'4':
+				'name': 'keyword.operator.intuicio4'
+			'5':
+				'name': 'constant.numeric.intuicio4'
+			'6':
+				'name': 'keyword.operator.intuicio4'
+	}
+	{
+		'match': '(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\s*(:)\s*((\\*)*\\s*(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*((\\[)\\s*(\\b(-)?[0-9.]+\\b)\\s*(\\])?)?)'
+		'captures':
+			'1':
+				'name': 'variable.parameter.intuicio4'
+			'4':
+				'name': 'keyword.operator.intuicio4'
+			'5':
+				'name': 'storage.type.intuicio4'
+			'7':
+				'name': 'keyword.operator.intuicio4'
+			'8':
+				'name': 'constant.numeric.intuicio4'
+			'10':
+				'name': 'keyword.operator.intuicio4'
+	}
+	{
+		'match': '(&)*\\s*(\\$\\b[A-Za-z_][A-Za-z_0-9]*\\b)'
+		'captures':
+			'1':
+				'name': 'keyword.operator.intuicio4'
+			'2':
+				'name': 'variable.parameter.intuicio4'
+	}
+	{
+		'match': '((\\b(-)?[0-9.]+\\b)|(".*"))\\s*(:)\\s*((\\*)*\\s*(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*((\\[)\\s*(\\b(-)?[0-9.]+\\b)\\s*(\\])?)?)'
+		'captures':
+			'2':
+				'name': 'constant.numeric.intuicio4'
+			'4':
+				'name': 'string.quoted.double'
+			'7':
+				'name': 'keyword.operator.intuicio4'
+			'8':
+				'name': 'storage.type.intuicio4'
+			'10':
+				'name': 'keyword.operator.intuicio4'
+			'11':
+				'name': 'constant.numeric.intuicio4'
+			'13':
+				'name': 'keyword.operator.intuicio4'
+	}
+	{
+		'match': '#!.*\\n'
+		'name': 'comment.line.double-slash.intuicio4'
+	}
+	{
+		'match': '//.*\\n'
+		'name': 'comment.line.double-slash.intuicio4'
+	}
+	{
+		'begin': '/\\*'
+		'end': '\\*/'
+		'name': 'comment.block.intuicio4'
+	}
+	{
+		'match': '@\\b[A-Za-z_][A-Za-z_0-9]*\\b'
+		'name': 'entity.name.function.intuicio4'
+	}
+	{
+		'match': '(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*:'
+		'name': 'constant.other.intuicio4'
+	}
+	{
+		'match': '\\b(-)?[0-9.]+\\b'
+		'name': 'constant.numeric.intuicio4'
+	}
+	{
+		'match': '#\\b(intuicio|stack|entry|import|pointertype)\\b'
+		'name': 'keyword.control.directive.intuicio4'
+	}
+	{
+		'match': '\\b(struct)\\b\\s+(\\b[A-Za-z_][A-Za-z_0-9]*\\b)'
+		'captures':
+			'1':
+				'name': 'keyword.control.struct.intuicio4'
+			'2':
+				'name': 'storage.type.intuicio4'
+	}
+	{
+		'match': '\\b(routine)\\b\\s+(\\b[A-Za-z_][A-Za-z_0-9]*\\b)'
+		'captures':
+			'1':
+				'name': 'keyword.control.routine.intuicio4'
+			'2':
+				'name': 'entity.name.function.intuicio4'
+	}
+	{
+		'match': '%\\b[A-Za-z_][A-Za-z_0-9]*\\b'
+		'name': 'constant.other.intuicio4'
+	}
+	{
+		'match': '\\b(call|ret|mov|add|sub|mul|div|jif|goto|new|del)\\b'
+		'name': 'keyword.control.operation.intuicio4'
+	}
+	{
+		'match': '(\\.\\.\\.|=>|->)'
+		'name': 'keyword.operator.intuicio4'
+	}
+	{
+		'match': '\\b(void|i8|i16|i32|i64|u8|u16|u32|u64|f32|f64)\\b'
+		'name': 'support.type.intuicio4'
+	}
+]
