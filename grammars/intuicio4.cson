@@ -49,7 +49,7 @@
 			'2':
 				'name': 'constant.numeric.intuicio4'
 			'4':
-				'name': 'string.quoted.double'
+				'name': 'string.quoted.double.intuicio4'
 			'7':
 				'name': 'keyword.operator.intuicio4'
 			'8':
@@ -60,6 +60,14 @@
 				'name': 'constant.numeric.intuicio4'
 			'13':
 				'name': 'keyword.operator.intuicio4'
+	}
+	{
+		'match': '(from)\\s+(".*")'
+		'captures':
+			'1':
+				'name': 'keyword.control.from.intuicio4'
+			'2':
+				'name': 'string.quoted.double.intuicio4'
 	}
 	{
 		'match': '#!.*\\n'
