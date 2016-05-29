@@ -44,21 +44,23 @@
 				'name': 'variable.parameter.intuicio4'
 	}
 	{
-		'match': '((\\b(-)?[0-9.]+\\b)|(".*"))\\s*(:)\\s*((\\*)*\\s*(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*((\\[)\\s*(\\b(-)?[0-9.]+\\b)\\s*(\\])?)?)'
+		'match': '((0x[0-9a-fA-F]+)|(\\b(-)?[0-9.]+\\b)|(".*"))\\s*(:)\\s*((\\*)*\\s*(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*((\\[)\\s*(\\b(-)?[0-9.]+\\b)\\s*(\\])?)?)'
 		'captures':
 			'2':
 				'name': 'constant.numeric.intuicio4'
-			'4':
-				'name': 'string.quoted.double.intuicio4'
-			'7':
-				'name': 'keyword.operator.intuicio4'
-			'8':
-				'name': 'storage.type.intuicio4'
-			'10':
-				'name': 'keyword.operator.intuicio4'
-			'11':
+			'3':
 				'name': 'constant.numeric.intuicio4'
-			'13':
+			'5':
+				'name': 'string.quoted.double.intuicio4'
+			'8':
+				'name': 'keyword.operator.intuicio4'
+			'9':
+				'name': 'storage.type.intuicio4'
+			'11':
+				'name': 'keyword.operator.intuicio4'
+			'12':
+				'name': 'constant.numeric.intuicio4'
+			'14':
 				'name': 'keyword.operator.intuicio4'
 	}
 	{
