@@ -64,7 +64,7 @@
 				'name': 'keyword.operator.intuicio4'
 	}
 	{
-		'match': '(from)\\s+(".*")'
+		'match': '(from)\\s+(\\?|".*")'
 		'captures':
 			'1':
 				'name': 'keyword.control.from.intuicio4'
