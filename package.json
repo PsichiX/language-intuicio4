@@ -1,6 +1,6 @@
 {
   "name": "language-intuicio4",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Atom language support for Intuicio 4",
   "repository": "https://github.com/PsichiX/language-intuicio4",
   "license": "MIT",
