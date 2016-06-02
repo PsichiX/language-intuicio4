@@ -20,7 +20,7 @@
 				'name': 'keyword.operator.intuicio4'
 	}
 	{
-		'match': '(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\s*(:)\s*((\\*)*\\s*(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*((\\[)\\s*(\\b(-)?[0-9.]+\\b)\\s*(\\])?)?)'
+		'match': '(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\s*(:)\s*((\\s*\\**)?\\s*(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*((\\[)\\s*(\\b(-)?[0-9.]+\\b)\\s*(\\])?)?)'
 		'captures':
 			'1':
 				'name': 'variable.parameter.intuicio4'
@@ -36,15 +36,13 @@
 				'name': 'keyword.operator.intuicio4'
 	}
 	{
-		'match': '(&)*\\s*(\\$\\b[A-Za-z_][A-Za-z_0-9]*\\b)'
+		'match': '((\\$\\b[A-Za-z_][A-Za-z_0-9]*\\b)|\\bnull\\b)'
 		'captures':
 			'1':
-				'name': 'keyword.operator.intuicio4'
-			'2':
 				'name': 'variable.parameter.intuicio4'
 	}
 	{
-		'match': '((0x[0-9a-fA-F]+)|(\\b(-)?[0-9.]+\\b)|(".*"))\\s*(:)\\s*((\\*)*\\s*(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*((\\[)\\s*(\\b(-)?[0-9.]+\\b)\\s*(\\])?)?)'
+		'match': '((0x[0-9a-fA-F]+)|(\\b(-)?[0-9.]+\\b)|(".*"))\\s*(:)\\s*((\\s*\\**)?\\s*(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*((\\[)\\s*(\\b(-)?[0-9.]+\\b)\\s*(\\])?)?)'
 		'captures':
 			'2':
 				'name': 'constant.numeric.intuicio4'
@@ -121,7 +119,7 @@
 		'name': 'constant.other.intuicio4'
 	}
 	{
-		'match': '\\b(call|ret|mov|add|sub|mul|div|jif|goto|new|del)\\b'
+		'match': '\\b(call|ret|mov|add|sub|mul|div|jif|goto|new|del|ptr)\\b'
 		'name': 'keyword.control.operation.intuicio4'
 	}
 	{
