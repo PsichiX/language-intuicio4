@@ -62,12 +62,22 @@
 				'name': 'keyword.operator.intuicio4'
 	}
 	{
-		'match': '(from)\\s+(\\?|".*")'
+		'match': '(from)\\s+((\\?|".*")|((\\[)\\s*(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*(:)\\s*(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*(\\])))'
 		'captures':
 			'1':
 				'name': 'keyword.control.from.intuicio4'
-			'2':
+			'3':
 				'name': 'string.quoted.double.intuicio4'
+			'5':
+				'name': 'keyword.operator.intuicio4'
+			'6':
+				'name': 'storage.type.intuicio4'
+			'7':
+				'name': 'keyword.operator.intuicio4'
+			'8':
+				'name': 'entity.name.function.intuicio4'
+			'9':
+				'name': 'keyword.operator.intuicio4'
 	}
 	{
 		'match': '#!.*\\n'
@@ -119,7 +129,7 @@
 		'name': 'constant.other.intuicio4'
 	}
 	{
-		'match': '\\b(call|ret|mov|add|sub|mul|div|jif|goto|new|del|ptr)\\b'
+		'match': '\\b(call|ret|mov|add|sub|mul|div|jif|goto|new|del|ptr|val|cast)\\b'
 		'name': 'keyword.control.operation.intuicio4'
 	}
 	{
