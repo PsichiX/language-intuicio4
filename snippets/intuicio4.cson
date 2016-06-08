@@ -1,0 +1,123 @@
+'.source.intuicio4':
+	'struct':
+		'prefix': 'struct'
+		'body': """
+			struct ${1:Name}
+			{
+				$2
+			};
+		"""
+	'field':
+		'prefix': 'field'
+		'body': """
+			${1:name}:${2:Type}
+		"""
+	'routine':
+		'prefix': 'routine'
+		'body': """
+			routine ${1:Name}(${2:arguments}):${3:Type}
+			<${4:variables}>
+			{
+				${5:ret void;}
+			};
+		"""
+	'main':
+		'prefix': 'main'
+		'body': """
+			routine Main():i32
+			<${1:variables}>
+			{
+				${2:ret void;}
+			};
+		"""
+	'template':
+		'prefix': 'template'
+		'body': """
+			#!/usr/bin/env intuicio
+
+			#intuicio 4.0;
+			#stack 8192;
+			#entry @Main;
+			#pointertype i64;
+
+			routine Main():i32
+			<${1:variables}>
+			{
+				${2:ret void;}
+			};
+		"""
+	'label':
+		'prefix': 'label'
+		'body': """
+			${1:name}:
+		"""
+	'call':
+		'prefix': 'call'
+		'body': """
+			call @${1:Name}(${2:parameters}) => ${3:targetValue};
+		"""
+	'ret':
+		'prefix': 'ret'
+		'body': """
+			ret ${1:void};
+		"""
+	'mov':
+		'prefix': 'mov'
+		'body': """
+			mov ${1:Type} ${2:sourceValue} => ${3:targetValue};
+		"""
+	'add':
+		'prefix': 'add'
+		'body': """
+			add ${1:Type} ${2:sourceValueA} ${3:sourceValueB} => ${4:targetValue};
+		"""
+	'sub':
+		'prefix': 'sub'
+		'body': """
+			sub ${1:Type} ${2:sourceValueA} ${3:sourceValueB} => ${4:targetValue};
+		"""
+	'mul':
+		'prefix': 'mul'
+		'body': """
+			mul ${1:Type} ${2:sourceValueA} ${3:sourceValueB} => ${4:targetValue};
+		"""
+	'div':
+		'prefix': 'div'
+		'body': """
+			div ${1:Type} ${2:sourceValueA} ${3:sourceValueB} => ${4:targetValue};
+		"""
+	'jif':
+		'prefix': 'jif'
+		'body': """
+			jif ${1:sourceValue} %${2:successLabel} %${3:failureLabel};
+		"""
+	'goto':
+		'prefix': 'goto'
+		'body': """
+			goto %${1:label};
+		"""
+	'new':
+		'prefix': 'new'
+		'body': """
+			new ${1:Type} ${2:countValue} => ${3:targetValue};
+		"""
+	'del':
+		'prefix': 'del'
+		'body': """
+			del ${1:Type} ${2:sourceValue};
+		"""
+	'ptr':
+		'prefix': 'ptr'
+		'body': """
+			ptr ${1:sourceValue} => ${2:targetValue}
+		"""
+	'val':
+		'prefix': 'val'
+		'body': """
+			val ${1:sourceValue} => ${2:targetValue}
+		"""
+	'cast':
+		'prefix': 'cast'
+		'body': """
+			cast ${1:sourceValue} => ${2:targetValue}
+		"""

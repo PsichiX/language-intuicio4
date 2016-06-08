@@ -1,0 +1,3 @@
+# Stronger bindings
+'atom-text-editor':
+  'f5': 'intuicio4:compile'

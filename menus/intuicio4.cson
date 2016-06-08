@@ -1,0 +1,8 @@
+'menu': [
+  {
+    'label': 'Intuicio4'
+    'submenu': [
+      { 'label': 'Compile', 'command': 'intuicio4:compile' }
+    ]
+  }
+]
