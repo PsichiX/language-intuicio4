@@ -101,7 +101,7 @@
 		'name': 'constant.other.intuicio4'
 	}
 	{
-		'match': '\\b(-)?[0-9.]+\\b'
+		'match': '\\b(-)?[0-9.]+[kmg]?\\b'
 		'name': 'constant.numeric.intuicio4'
 	}
 	{
@@ -129,7 +129,7 @@
 		'name': 'constant.other.intuicio4'
 	}
 	{
-		'match': '\\b(call|ret|mov|add|sub|mul|div|jif|goto|new|del|ptr|val|cast)\\b'
+		'match': '\\b(call|ret|mov|add|sub|mul|div|jif|goto|new|del|ptr|val|cast|vargs|vargr)\\b'
 		'name': 'keyword.control.operation.intuicio4'
 	}
 	{

@@ -104,7 +104,7 @@
 	'del':
 		'prefix': 'del'
 		'body': """
-			del ${1:Type} ${2:sourceValue};
+			del ${1:sourceValue};
 		"""
 	'ptr':
 		'prefix': 'ptr'
