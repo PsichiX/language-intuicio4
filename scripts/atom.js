@@ -7,16 +7,43 @@ var CompositeDisposable = require('atom').CompositeDisposable,
 	version = '4.0.0',
 	intuicio_toolset_download_url = 'https://github.com/PsichiX/language-intuicio4/releases';
 
+function formatString(format, object)
+{
+	if(!format){
+		return "";
+	}
+	return format.replace(/\$\{([a-zA-Z0-9_]+)\}/g,
+		function(value, id)
+		{
+			var r = object[id];
+			return typeof r === 'string' ? r : value;
+		}
+	);
+
+}
+
 function Intuicio() {
 
-	/*this.config = {
-		checkSyntaxOnSave: {
+	this.config = {
+		/*checkSyntaxOnSave: {
 			title: 'Check syntax on Save',
 			description: 'If set to true, then *.i4s file will checked for syntax errors on Save',
 			type: 'boolean',
 			default: true
+		}*/
+		commandCheckSyntax: {
+			title: 'Check syntax command',
+			description: 'Command triggered on syntax check',
+			type: 'string',
+			default: 'intuicio ${FILE_PATH}'
+		},
+		commandRunScript: {
+			title: 'Run script command',
+			description: 'Command triggered on script run',
+			type: 'string',
+			default: 'intuicio ${FILE_PATH} -sd ${FILE_DIR} -ep I4Run -sd ${FILE_DIR} -mcs 8'
 		}
-	};*/
+	};
 
 }
 
@@ -89,7 +116,14 @@ Intuicio.prototype.promiseCheckSyntax = function(filePath){
 
 	return new Promise(function(accept, reject){
 
-		var cmd = 'intuicio ' + filePath;
+		var dir = path.dirname(filePath),
+			cmd = formatString(
+				atom.config.get('language-intuicio4.commandCheckSyntax'),
+				{
+					FILE_PATH: filePath,
+					FILE_DIR: dir
+				}
+			);
 
 		child_process.exec(cmd, function(error, stdout, stderr){
 			if(error){
@@ -121,18 +155,24 @@ Intuicio.prototype.promiseRunScript = function(filePath){
 	return new Promise(function(accept, reject){
 
 		var dir = path.dirname(filePath),
-			cmd = 'intuicio ' + filePath
-				+ ' -sd ' + dir
-				+ ' -ep I4Run'
-				+ ' -nmd ' + dir
-				+ ' -mcs 8';
+			cmd = formatString(
+				atom.config.get('language-intuicio4.commandRunScript'),
+				{
+					FILE_PATH: filePath,
+					FILE_DIR: dir
+				}
+			);
 
 		child_process.exec(cmd, function(error, stdout, stderr){
 			if(error){
-				atom.notifications.addError(stdout);
+				atom.notifications.addError('Running: ' + filePath, {
+					detail: stdout
+				});
 				reject();
 			}else{
-				atom.notifications.addSuccess(stdout);
+				atom.notifications.addSuccess('Running: ' + filePath, {
+					detail: stdout
+				});
 				accept();
 			}
 		});
@@ -174,7 +214,9 @@ Intuicio.prototype.onCheckSyntax = function(){
 	this.promiseCheckBinaries()
 		.then(this.promiseCheckSyntax.bind(this, filePath))
 		.catch(function(reason){
-			atom.notifications.addError(reason);
+			if(reason){
+				atom.notifications.addError(reason.toString());
+			}
 		});
 
 };
@@ -192,7 +234,9 @@ Intuicio.prototype.onCompile = function(){
 	this.promiseCheckBinaries()
 		.then(this.promiseCompileScript.bind(this, filePath))
 		.catch(function(reason){
-			atom.notifications.addError(reason);
+			if(reason){
+				atom.notifications.addError(reason.toString());
+			}
 		});
 
 };
@@ -210,7 +254,9 @@ Intuicio.prototype.onRun = function(){
 	this.promiseCheckBinaries()
 		.then(this.promiseRunScript.bind(this, filePath))
 		.catch(function(reason){
-			atom.notifications.addError(reason);
+			if(reason){
+				atom.notifications.addError(reason.toString());
+			}
 		});
 
 };
@@ -220,7 +266,9 @@ Intuicio.prototype.onInfo = function(){
 	this.promiseCheckBinaries()
 		.then(this.promiseShowInfo.bind(this))
 		.catch(function(reason){
-			atom.notifications.addError(reason);
+			if(reason){
+				atom.notifications.addError(reason.toString());
+			}
 		});
 
 };
