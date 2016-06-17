@@ -35,7 +35,7 @@ function Intuicio() {
 			title: 'Check syntax command',
 			description: 'Command triggered on syntax check',
 			type: 'string',
-			default: 'intuicio ${FILE_PATH}'
+			default: 'intuicio ${FILE_PATH} -sd ${FILE_DIR}'
 		},
 		commandRunScript: {
 			title: 'Run script command',
@@ -125,7 +125,9 @@ Intuicio.prototype.promiseCheckSyntax = function(filePath){
 				}
 			);
 
-		child_process.exec(cmd, function(error, stdout, stderr){
+		child_process.exec(cmd, {
+			cwd: dir
+		}, function(error, stdout, stderr){
 			if(error){
 				atom.notifications.addError(stdout);
 				reject();
@@ -163,7 +165,9 @@ Intuicio.prototype.promiseRunScript = function(filePath){
 				}
 			);
 
-		child_process.exec(cmd, function(error, stdout, stderr){
+		child_process.exec(cmd, {
+			cwd: dir
+		}, function(error, stdout, stderr){
 			if(error){
 				atom.notifications.addError('Running: ' + filePath, {
 					detail: stdout

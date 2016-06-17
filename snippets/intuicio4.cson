@@ -42,7 +42,7 @@
 	'template':
 		'prefix': 'template'
 		'body': """
-			#!/usr/bin/env intuicio
+			#!/usr/bin/env i4s
 
 			#intuicio 4.0;
 			#stack 8k;
