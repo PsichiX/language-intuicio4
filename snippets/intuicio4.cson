@@ -1,4 +1,13 @@
 '.source.intuicio4':
+	'directives':
+		'prefix': 'directives'
+		'body': """
+			#intuicio 4.0;
+			#stack 8k;
+			#memory 16k;
+			#entry @${1:EntryPoint};
+			#pointersize 32;
+		"""
 	'struct':
 		'prefix': 'struct'
 		'body': """
@@ -36,9 +45,10 @@
 			#!/usr/bin/env intuicio
 
 			#intuicio 4.0;
-			#stack 8192;
+			#stack 8k;
+			#memory 16k;
 			#entry @Main;
-			#pointertype i64;
+			#pointersize 32;
 
 			routine Main():i32
 			<${1:variables}>
@@ -120,4 +130,14 @@
 		'prefix': 'cast'
 		'body': """
 			cast ${1:sourceValue} => ${2:targetValue}
+		"""
+	'vargs':
+		'prefix': 'vargs'
+		'body': """
+			vargs => ${1:targetValue}
+		"""
+	'vargr':
+		'prefix': 'vargr'
+		'body': """
+			vargr ${1:sourcePositionValue} => ${2:targetValue} ${3:targetPositionValue}
 		"""

@@ -9,14 +9,14 @@ var CompositeDisposable = require('atom').CompositeDisposable,
 
 function Intuicio() {
 
-	this.config = {
-		compileOnSave: {
-			title: 'Compile on Save',
-			description: 'If set to true, then *.i4s file is compiled on Save',
+	/*this.config = {
+		checkSyntaxOnSave: {
+			title: 'Check syntax on Save',
+			description: 'If set to true, then *.i4s file will checked for syntax errors on Save',
 			type: 'boolean',
 			default: true
 		}
-	};
+	};*/
 
 }
 
@@ -27,22 +27,20 @@ Intuicio.prototype.subscriptions = null;
 
 Intuicio.prototype.activate = function(state){
 
-	var subs = this.subscriptions = new CompositeDisposable(),
-		self = this;
+	var subs = this.subscriptions = new CompositeDisposable();
 
 	subs.add(atom.commands.add('atom-text-editor', 'intuicio4:check-syntax', function(){
-		self.onCheckSyntax(this);
-	}));
+		this.onCheckSyntax();
+	}.bind(this)));
 	subs.add(atom.commands.add('atom-text-editor', 'intuicio4:run', function(){
-		self.onRun(this);
-	}));
+		this.onRun();
+	}.bind(this)));
 	subs.add(atom.commands.add('atom-text-editor', 'intuicio4:compile', function(){
-		//self.onCompile(this);
-		throw Error('COMPILATION TO NATIVE MODULE IS NOT YET IMPLEMENTED!');
-	}));
+		this.onCompile();
+	}.bind(this)));
 	subs.add(atom.commands.add('*', 'intuicio4:info', function(){
-		self.onInfo(this);
-	}));
+		this.onInfo();
+	}.bind(this)));
 
 };
 
@@ -98,6 +96,7 @@ Intuicio.prototype.promiseCheckSyntax = function(filePath){
 				atom.notifications.addError(stdout);
 				reject();
 			}else{
+				atom.notifications.addSuccess(filePath + ' is free from syntax errors!');
 				accept();
 			}
 		});
@@ -110,6 +109,7 @@ Intuicio.prototype.promiseCompileScript = function(filePath){
 
 	return new Promise(function(accept, reject){
 
+		atom.notifications.addError('COMPILATION TO NATIVE MODULE IS NOT YET IMPLEMENTED!');
 		reject();
 
 	});
@@ -123,7 +123,9 @@ Intuicio.prototype.promiseRunScript = function(filePath){
 		var dir = path.dirname(filePath),
 			cmd = 'intuicio ' + filePath
 				+ ' -sd ' + dir
-				+ ' -ep I4Run -mcs 8';
+				+ ' -ep I4Run'
+				+ ' -nmd ' + dir
+				+ ' -mcs 8';
 
 		child_process.exec(cmd, function(error, stdout, stderr){
 			if(error){
@@ -159,7 +161,7 @@ Intuicio.prototype.promiseShowInfo = function(filePath){
 
 };
 
-Intuicio.prototype.onCheckSyntax = function(dom){
+Intuicio.prototype.onCheckSyntax = function(){
 
 	var editor = atom.workspace.getActivePaneItem(),
 		file = editor ? editor.buffer.file : null,
@@ -177,7 +179,7 @@ Intuicio.prototype.onCheckSyntax = function(dom){
 
 };
 
-Intuicio.prototype.onCompile = function(dom){
+Intuicio.prototype.onCompile = function(){
 
 	var editor = atom.workspace.getActivePaneItem(),
 		file = editor ? editor.buffer.file : null,
@@ -195,7 +197,7 @@ Intuicio.prototype.onCompile = function(dom){
 
 };
 
-Intuicio.prototype.onRun = function(dom){
+Intuicio.prototype.onRun = function(){
 
 	var editor = atom.workspace.getActivePaneItem(),
 		file = editor ? editor.buffer.file : null,
@@ -213,7 +215,7 @@ Intuicio.prototype.onRun = function(dom){
 
 };
 
-Intuicio.prototype.onInfo = function(dom){
+Intuicio.prototype.onInfo = function(){
 
 	this.promiseCheckBinaries()
 		.then(this.promiseShowInfo.bind(this))

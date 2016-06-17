@@ -117,11 +117,13 @@
 				'name': 'storage.type.intuicio4'
 	}
 	{
-		'match': '\\b(routine)\\b\\s+(\\b[A-Za-z_][A-Za-z_0-9]*\\b)'
+		'match': '(\\b(export)\\b\\s+)?\\b(routine)\\b\\s+(\\b[A-Za-z_][A-Za-z_0-9]*\\b)'
 		'captures':
-			'1':
-				'name': 'keyword.control.routine.intuicio4'
 			'2':
+				'name': 'keyword.control.export.intuicio4'
+			'3':
+				'name': 'keyword.control.routine.intuicio4'
+			'4':
 				'name': 'entity.name.function.intuicio4'
 	}
 	{
