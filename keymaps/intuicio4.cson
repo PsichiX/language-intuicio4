@@ -1,3 +1,5 @@
 # Stronger bindings
 'atom-text-editor':
-  'f5': 'intuicio4:compile'
+  'f4': 'intuicio4:check-syntax'
+  'f5': 'intuicio4:run'
+  'f6': 'intuicio4:compile'

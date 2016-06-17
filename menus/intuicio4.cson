@@ -2,7 +2,10 @@
   {
     'label': 'Intuicio4'
     'submenu': [
-      { 'label': 'Compile', 'command': 'intuicio4:compile' }
+      { 'label': 'Check Syntax', 'command': 'intuicio4:check-syntax' },
+      { 'label': 'Run', 'command': 'intuicio4:run' },
+      { 'label': 'Compile', 'command': 'intuicio4:compile' },
+      { 'label': 'Info', 'command': 'intuicio4:info' }
     ]
   }
 ]
