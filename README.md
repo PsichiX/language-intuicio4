@@ -17,3 +17,11 @@
 ### Working example:
 
 https://gist.github.com/PsichiX/37899a92b6493f18c22e
+
+### How to:
+
+- Install Intuicio Toolset for your platform found in this repository Releases.
+- Install `language-intuicio4` package in Atom IDE.
+- Create or open `.i4s` file.
+- Press F4 (Menu -> Intuicio 4 -> Check syntax) for syntax check.
+- Preas F5 (Menu -> Intuicio 4 -> Run) to run script.
