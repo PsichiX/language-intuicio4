@@ -10,6 +10,9 @@
 - [ ] C Native Modules compilation target
 - [ ] ASM.js Native Modules compilation target
 - [ ] Atom IDE extension for intuicio projects
+  * [x] Syntax checks
+  * [x] Running scripts
+  * [ ] Compiling native modules
 
 ### Working example:
 
