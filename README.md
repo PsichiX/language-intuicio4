@@ -13,4 +13,4 @@
 
 ### Working example:
 
-![Usage of Intuicio 4 native modules](https://gist.github.com/PsichiX/37899a92b6493f18c22e)
+https://gist.github.com/PsichiX/37899a92b6493f18c22e
