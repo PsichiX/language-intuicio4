@@ -131,7 +131,7 @@
 		'name': 'constant.other.intuicio4'
 	}
 	{
-		'match': '\\b(call|ret|mov|add|sub|mul|div|jif|goto|new|del|ptr|val|cast|vargs|vargr)\\b'
+		'match': '\\b(call|async|parallel|join|ret|mov|add|sub|mul|div|jif|goto|new|del|ptr|val|cast|vargs|vargr)\\b'
 		'name': 'keyword.control.operation.intuicio4'
 	}
 	{
