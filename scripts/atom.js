@@ -83,7 +83,9 @@ Intuicio.prototype.promiseCheckBinaries = function(){
 	return new Promise(function(accept, reject){
 
 		if(!shelljs.which('intuicio')){
-			atom.notifications.addError('There is no Intuicio Toolset installed on this machine!\n\nAfter closing this dialog, you\'ll be able to download Intuicio Toolset from official GitHub webpage.');
+			atom.notifications.addError('There is no Intuicio Toolset installed on this machine!', {
+				detail: 'Please, download Intuicio Toolset from official releases webpage at GitHub.'
+			});
 			var platform = process.platform,
 				cmd = '';
 			if('win32'){
@@ -100,7 +102,9 @@ Intuicio.prototype.promiseCheckBinaries = function(){
 				var r = /^Intuicio\s+v([0-9]+\.[0-9]+\.[0-9]+)$/,
 					m = stdout.match(r);
 				if(m.length < 2 || m[1] !== version){
-					atom.notifications.addError('Intuicio Toolset version does not match Atom language version supported!\nIntuicio Toolset installed: ' + m[1] + '\nAtom language support: ' + version);
+					atom.notifications.addError('Intuicio Toolset version does not match Atom language version supported!', {
+						detail: 'Intuicio Toolset installed: ' + m[1] + '\nAtom language support: ' + version
+					});
 					reject();
 				}else{
 					accept();
