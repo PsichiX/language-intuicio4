@@ -1,6 +1,6 @@
 ## Atom language support for Intuicio 4
 
-![Syntax](https://cloud.githubusercontent.com/assets/2111867/16136676/d766b992-342c-11e6-9ea4-e7eadc0d1671.png)
+![intuicio4_final_syntax](https://cloud.githubusercontent.com/assets/2111867/16289217/6c84ce0e-38f3-11e6-8d03-97ac3cd8673d.png)
 
 ### Toolset Features:
 - [x] Syntax grammar
