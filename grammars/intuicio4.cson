@@ -117,13 +117,15 @@
 				'name': 'storage.type.intuicio4'
 	}
 	{
-		'match': '(\\b(export)\\b\\s+)?\\b(routine)\\b\\s+(\\b[A-Za-z_][A-Za-z_0-9]*\\b)'
+		'match': '(\\b(export)\\b\\s+)?(\\b(synchronized)\\b\\s+)?\\b(routine)\\b\\s+(\\b[A-Za-z_][A-Za-z_0-9]*\\b)'
 		'captures':
 			'2':
 				'name': 'keyword.control.export.intuicio4'
-			'3':
-				'name': 'keyword.control.routine.intuicio4'
 			'4':
+				'name': 'keyword.control.synchronized.intuicio4'
+			'5':
+				'name': 'keyword.control.routine.intuicio4'
+			'6':
 				'name': 'entity.name.function.intuicio4'
 	}
 	{
@@ -131,7 +133,7 @@
 		'name': 'constant.other.intuicio4'
 	}
 	{
-		'match': '\\b(call|async|parallel|join|ret|mov|add|sub|mul|div|jif|goto|new|del|ptr|val|cast|vargs|vargr)\\b'
+		'match': '\\b(call|async|parallel|join|ret|mov|add|sub|mul|div|and|or|xor|neg|lsh|rsh|eq|ls|gr|jif|goto|new|del|ptr|val|cast|vargs|vargr|mtxc|mtxd|lock|unlock)\\b'
 		'name': 'keyword.control.operation.intuicio4'
 	}
 	{

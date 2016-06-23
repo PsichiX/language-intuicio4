@@ -53,7 +53,7 @@
 			routine Main():i32
 			<${1:variables}>
 			{
-				${2:ret void;}
+				${2:ret 0:i32;}
 			};
 		"""
 	'label':
