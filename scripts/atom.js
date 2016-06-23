@@ -25,6 +25,12 @@ function formatString(format, object)
 function Intuicio() {
 
 	this.config = {
+		/*runScriptsInTerminalWindow: {
+			title: 'Run scripts in terminal window',
+			description: 'If set to true, then *.i4s files will run in external terminal window',
+			type: 'boolean',
+			default: false
+		},*/
 		/*checkSyntaxOnSave: {
 			title: 'Check syntax on Save',
 			description: 'If set to true, then *.i4s file will checked for syntax errors on Save',
@@ -84,15 +90,16 @@ Intuicio.prototype.promiseCheckBinaries = function(){
 
 		if(!shelljs.which('intuicio')){
 			atom.notifications.addError('There is no Intuicio Toolset installed on this machine!', {
-				detail: 'Please, download Intuicio Toolset from official releases webpage at GitHub.'
+				detail: 'Please, download Intuicio Toolset from official releases webpage at GitHub.',
+				dismissable: true
 			});
 			var platform = process.platform,
 				cmd = '';
-			if('win32'){
+			if(platform === 'win32'){
 				cmd = 'start ' + intuicio_toolset_download_url;
-			}else if('linux'){
+			}else if(platform === 'linux'){
 				cmd = 'xdg-open ' + intuicio_toolset_download_url;
-			}else if('darwin'){
+			}else if(platform === 'darwin'){
 				cmd = 'open ' + intuicio_toolset_download_url;
 			}
 			shelljs.exec(cmd, {async: true});
@@ -103,7 +110,8 @@ Intuicio.prototype.promiseCheckBinaries = function(){
 					m = stdout.match(r);
 				if(m.length < 2 || m[1] !== version){
 					atom.notifications.addError('Intuicio Toolset version does not match Atom language version supported!', {
-						detail: 'Intuicio Toolset installed: ' + m[1] + '\nAtom language support: ' + version
+						detail: 'Intuicio Toolset installed: ' + m[1] + '\nAtom language support: ' + version,
+						dismissable: true
 					});
 					reject();
 				}else{
@@ -133,7 +141,9 @@ Intuicio.prototype.promiseCheckSyntax = function(filePath){
 			cwd: dir
 		}, function(error, stdout, stderr){
 			if(error){
-				atom.notifications.addError(stdout);
+				atom.notifications.addError(stdout, {
+					dismissable: true
+				});
 				reject();
 			}else{
 				atom.notifications.addSuccess(filePath + ' is free from syntax errors!');
@@ -149,7 +159,9 @@ Intuicio.prototype.promiseCompileScript = function(filePath){
 
 	return new Promise(function(accept, reject){
 
-		atom.notifications.addError('COMPILATION TO NATIVE MODULE IS NOT YET IMPLEMENTED!');
+		atom.notifications.addError('COMPILATION TO NATIVE MODULE IS NOT YET IMPLEMENTED!', {
+			dismissable: true
+		});
 		reject();
 
 	});
@@ -167,19 +179,25 @@ Intuicio.prototype.promiseRunScript = function(filePath){
 					FILE_PATH: filePath,
 					FILE_DIR: dir
 				}
-			);
+			),
+			runScriptsInTerminalWindow = atom.config.get(
+				'language-intuicio4.runScriptsInTerminalWindow'
+			),
+			platform = process.platform;
 
 		child_process.exec(cmd, {
 			cwd: dir
 		}, function(error, stdout, stderr){
 			if(error){
 				atom.notifications.addError('Running: ' + filePath, {
-					detail: stdout
+					detail: stdout,
+					dismissable: true
 				});
 				reject();
 			}else{
 				atom.notifications.addSuccess('Running: ' + filePath, {
-					detail: stdout
+					detail: stdout,
+					dismissable: true
 				});
 				accept();
 			}
@@ -197,7 +215,9 @@ Intuicio.prototype.promiseShowInfo = function(filePath){
 
 		child_process.exec(cmd, function(error, stdout, stderr){
 			if(error){
-				atom.notifications.addError(stdout);
+				atom.notifications.addError(stdout, {
+					dismissable: true
+				});
 				reject();
 			}else{
 				atom.notifications.addSuccess(stdout);
@@ -223,7 +243,9 @@ Intuicio.prototype.onCheckSyntax = function(){
 		.then(this.promiseCheckSyntax.bind(this, filePath))
 		.catch(function(reason){
 			if(reason){
-				atom.notifications.addError(reason.toString());
+				atom.notifications.addError(reason.toString(), {
+					dismissable: true
+				});
 			}
 		});
 
@@ -243,7 +265,9 @@ Intuicio.prototype.onCompile = function(){
 		.then(this.promiseCompileScript.bind(this, filePath))
 		.catch(function(reason){
 			if(reason){
-				atom.notifications.addError(reason.toString());
+				atom.notifications.addError(reason.toString(), {
+					dismissable: true
+				});
 			}
 		});
 
@@ -263,7 +287,9 @@ Intuicio.prototype.onRun = function(){
 		.then(this.promiseRunScript.bind(this, filePath))
 		.catch(function(reason){
 			if(reason){
-				atom.notifications.addError(reason.toString());
+				atom.notifications.addError(reason.toString(), {
+					dismissable: true
+				});
 			}
 		});
 
@@ -275,7 +301,9 @@ Intuicio.prototype.onInfo = function(){
 		.then(this.promiseShowInfo.bind(this))
 		.catch(function(reason){
 			if(reason){
-				atom.notifications.addError(reason.toString());
+				atom.notifications.addError(reason.toString(), {
+					dismissable: true
+				});
 			}
 		});
 
