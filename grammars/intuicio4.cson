@@ -133,7 +133,7 @@
 		'name': 'constant.other.intuicio4'
 	}
 	{
-		'match': '\\b(call|async|parallel|join|ret|mov|add|sub|mul|div|and|or|xor|neg|lsh|rsh|eq|ls|gr|jif|goto|new|del|ptr|val|cast|vargs|vargr|mtxc|mtxd|lock|unlock)\\b'
+		'match': '\\b(call|async|parallel|join|ret|mov|add|sub|mul|div|and|or|xor|neg|lsh|rsh|eq|ls|gr|push|pop|drop|jif|goto|new|del|ptr|val|cast|vargs|vargr|mtxc|mtxd|lock|unlock)\\b'
 		'name': 'keyword.control.operation.intuicio4'
 	}
 	{
