@@ -2,7 +2,7 @@
 'fileTypes': [
 	'i4s'
 ]
-'firstLineMatch': '^#!.*\\bintuicio'
+'firstLineMatch': '^#!.*\\bi4s\\b'
 'name': 'Intuicio 4 Assembly'
 'patterns': [
 	{
@@ -80,7 +80,7 @@
 	}
 	{
 		# value pointer: string constant
-		'match': '(".+?(?=")")\\s*:\\s*((\\s*\\**)?\\s*(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*((\\[)\\s*(\\b-?[0-9.]+\\b)\\s*(\\])?)?)'
+		'match': '(".*?(?=")")\\s*:\\s*((\\s*\\**)?\\s*(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*((\\[)\\s*(\\b-?[0-9.]+\\b)\\s*(\\])?)?)'
 		'captures':
 			'1':
 				'name': 'string.quoted.double.intuicio4'
@@ -97,7 +97,7 @@
 	}
 	{
 		# (import) from file or native module
-		'match': '(from)\\s+((\\?|".+?(?=")")|((\\[)\\s*(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*(:)\\s*(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*(\\])))'
+		'match': '(from)\\s+((\\?|".*?(?=")")|((\\[)\\s*(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*(:)\\s*(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*(\\])))'
 		'captures':
 			'1':
 				'name': 'keyword.control.from.intuicio4'
@@ -179,7 +179,7 @@
 	}
 	{
 		# operation
-		'match': '\\b(call|async|parallel|join|ret|mov|add|sub|mul|div|and|or|xor|neg|lsh|rsh|eq|ls|gr|push|pop|drop|jif|goto|new|del|ptr|val|cast|vargs|vargr|mtxc|mtxd|lock|unlock)\\b'
+		'match': '\\b(call|async|parallel|join|ret|mov|add|sub|mul|div|and|or|xor|neg|lsh|rsh|eq|ls|gr|push|pop|drop|jif|goto|new|del|ptr|val|cast|nil|vargs|vargr|mtxc|mtxd|lock|unlock)\\b'
 		'name': 'keyword.control.operation.intuicio4'
 	}
 	{
