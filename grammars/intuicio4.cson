@@ -179,7 +179,7 @@
 	}
 	{
 		# operation
-		'match': '\\b(call|async|join|ret|mov|movb|add|sub|mul|div|and|or|xor|neg|lsh|rsh|eq|ls|gr|push|pop|drop|cpush|cpop|cdrop|ctxc|ctxd|ctxs|jif|goto|jump|address|new|del|ptr|val|cast|nil|vargs|vargr|mtxc|mtxd|lock|unlock)\\b'
+		'match': '\\b(call|async|join|ret|mov|movb|conv|add|sub|mul|div|and|or|xor|neg|lsh|rsh|eq|ls|gr|push|pop|drop|cpush|cpop|cdrop|ctxc|ctxd|ctxs|jif|goto|jump|address|new|del|ptr|val|cast|nil|vargs|vargr|mtxc|mtxd|lock|unlock)\\b'
 		'name': 'keyword.control.operation.intuicio4'
 	}
 	{
