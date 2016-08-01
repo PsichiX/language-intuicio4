@@ -1,6 +1,6 @@
 {
   "name": "language-intuicio4",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "main": "./scripts/atom.js",
   "description": "Atom language support for Intuicio 4",
   "repository": "https://github.com/PsichiX/language-intuicio4",
