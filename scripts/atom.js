@@ -25,12 +25,6 @@ function formatString(format, object)
 function Intuicio() {
 
 	this.config = {
-		/*runScriptsInTerminalWindow: {
-			title: 'Run scripts in terminal window',
-			description: 'If set to true, then *.i4s files will run in external terminal window',
-			type: 'boolean',
-			default: false
-		},*/
 		/*checkSyntaxOnSave: {
 			title: 'Check syntax on Save',
 			description: 'If set to true, then *.i4s file will checked for syntax errors on Save',
@@ -47,7 +41,7 @@ function Intuicio() {
 			title: 'Run script command',
 			description: 'Command triggered on script run',
 			type: 'string',
-			default: 'intuicio ${FILE_PATH} -sd ${FILE_DIR} -ep I4Run -sd ${FILE_DIR} -mcs 8'
+			default: 'intuicio ${FILE_PATH} -sd ${FILE_DIR} -ep I4Run -sd ${FILE_DIR} -mcs 8 -nmd ${FILE_DIR}'
 		}
 	};
 
@@ -180,25 +174,26 @@ Intuicio.prototype.promiseRunScript = function(filePath){
 					FILE_DIR: dir
 				}
 			),
-			runScriptsInTerminalWindow = atom.config.get(
-				'language-intuicio4.runScriptsInTerminalWindow'
-			),
-			platform = process.platform;
+			platform = process.platform,
+			wrappedCmd;
 
-		child_process.exec(cmd, {
+		if(platform === 'win32'){
+			wrappedCmd = 'start cmd /k \"' + cmd + ' & pause & exit\"';
+		}else{
+			wrappedCmd = cmd;
+		}
+
+		child_process.exec(wrappedCmd, {
 			cwd: dir
 		}, function(error, stdout, stderr){
 			if(error){
-				atom.notifications.addError('Running: ' + filePath, {
+				atom.notifications.addError('Failed run of: ' + filePath, {
 					detail: stdout,
 					dismissable: true
 				});
 				reject();
 			}else{
-				atom.notifications.addSuccess('Running: ' + filePath, {
-					detail: stdout,
-					dismissable: true
-				});
+				atom.notifications.addSuccess('Successful run of: ' + filePath);
 				accept();
 			}
 		});
