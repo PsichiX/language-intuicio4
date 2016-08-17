@@ -96,6 +96,25 @@
 				'name': 'keyword.operator.intuicio4'
 	}
 	{
+		# value pointer: sizeof constant
+		'match': '(\\{)\\s*((\\s*\\**)?\\s*(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*((\\[)\\s*(\\b-?[0-9.]+\\b)\\s*(\\])?)?)\\s*(\\})'
+		'captures':
+			'1':
+				'name': 'keyword.operator.intuicio4'
+			'3':
+				'name': 'keyword.operator.intuicio4'
+			'4':
+				'name': 'storage.type.intuicio4'
+			'6':
+				'name': 'keyword.operator.intuicio4'
+			'7':
+				'name': 'constant.numeric.intuicio4'
+			'8':
+				'name': 'keyword.operator.intuicio4'
+			'9':
+				'name': 'keyword.operator.intuicio4'
+	}
+	{
 		# (import) from file or native module
 		'match': '(from)\\s+((\\?|".*?(?=")")|((\\[)\\s*(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*(:)\\s*(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*(\\])))'
 		'captures':
