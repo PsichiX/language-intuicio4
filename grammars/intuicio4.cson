@@ -6,6 +6,87 @@
 'name': 'Intuicio 4 Assembly'
 'patterns': [
 	{
+		# template
+		'begin': '(\\btemplate\\b)\\s*(\\<)'
+		'end': '\\>'
+		'beginCaptures':
+			'1':
+				'name': 'keyword.control.template.intuicio4'
+			'2':
+				'name': 'keyword.operator.intuicio4'
+		'endCaptures':
+			'0':
+				'name': 'keyword.operator.intuicio4'
+		'patterns': [
+			{
+				'match': '\\b[A-Za-z_][A-Za-z_0-9]*\\b'
+				'name': 'storage.type.intuicio4'
+			}
+			{
+				'match': '\\,'
+				'name': 'keyword.operator.intuicio4'
+			}
+		]
+	}
+	{
+		# implement routine
+		'begin': '(\\bimplement\\b)\\s+(@\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*(\\<)'
+		'end': '(\\>)\\s*(\\bas\\b)\\s+(@\\b[A-Za-z_][A-Za-z_0-9]*\\b)'
+		'beginCaptures':
+			'1':
+				'name': 'keyword.control.implement.intuicio4'
+			'2':
+				'name': 'entity.name.function.intuicio4'
+			'3':
+				'name': 'keyword.operator.intuicio4'
+		'endCaptures':
+			'1':
+				'name': 'keyword.operator.intuicio4'
+			'2':
+				'name': 'keyword.control.as.intuicio4'
+			'3':
+				'name': 'entity.name.function.intuicio4'
+		'patterns': [
+			{
+				'match': '\\b[A-Za-z_][A-Za-z_0-9]*\\b'
+				'name': 'storage.type.intuicio4'
+			}
+			{
+				'match': '\\,'
+				'name': 'keyword.operator.intuicio4'
+			}
+		]
+	}
+	{
+		# implement struct
+		'begin': '(\\bimplement\\b)\\s+(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*(\\<)'
+		'end': '(\\>)\\s*(\\bas\\b)\\s+(\\b[A-Za-z_][A-Za-z_0-9]*\\b)'
+		'beginCaptures':
+			'1':
+				'name': 'keyword.control.implement.intuicio4'
+			'2':
+				'name': 'storage.type.intuicio4'
+			'3':
+				'name': 'keyword.operator.intuicio4'
+		'endCaptures':
+			'1':
+				'name': 'keyword.operator.intuicio4'
+			'2':
+				'name': 'keyword.control.as.intuicio4'
+			'3':
+				'name': 'storage.type.intuicio4'
+		'patterns': [
+			{
+				'match': '\\b[A-Za-z_][A-Za-z_0-9]*\\b'
+				'name': 'storage.type.intuicio4'
+			}
+			{
+				'match': '\\,'
+				'name': 'keyword.operator.intuicio4'
+			}
+		]
+	}
+	{
 		# type
 		'match': ':\\s*(\\*)*\\s*(\\b[A-Za-z_][A-Za-z_0-9]*\\b)\\s*((\\[)\\s*(\\b-?[0-9.]+\\b)\\s*(\\])?)?'
 		'captures':
@@ -39,10 +120,12 @@
 	}
 	{
 		# value pointer: identifier
-		'match': '((\\$\\b[A-Za-z_][A-Za-z_0-9]*\\b)|\\bnull\\b)'
+		'match': '((\\$\\b[A-Za-z_][A-Za-z_0-9]*\\b)|(\\bnull\\b))'
 		'captures':
-			'1':
+			'2':
 				'name': 'variable.parameter.intuicio4'
+			'3':
+				'name': 'support.type.intuicio4'
 	}
 	{
 		# value pointer: hex constant
@@ -171,11 +254,15 @@
 	}
 	{
 		# structure
-		'match': '\\b(struct)\\b\\s+(\\b[A-Za-z_][A-Za-z_0-9]*\\b)'
+		'match': '\\b(struct)\\b\\s+(\\b[A-Za-z_][A-Za-z_0-9]*\\b)(\\s+(extends)\\s+(\\b[A-Za-z_][A-Za-z_0-9]*\\b))?'
 		'captures':
 			'1':
 				'name': 'keyword.control.struct.intuicio4'
 			'2':
+				'name': 'storage.type.intuicio4'
+			'4':
+				'name': 'keyword.control.extends.intuicio4'
+			'5':
 				'name': 'storage.type.intuicio4'
 	}
 	{
@@ -198,7 +285,7 @@
 	}
 	{
 		# operation
-		'match': '\\b(call|async|join|ret|mov|movb|conv|add|sub|mul|div|and|or|xor|neg|lsh|rsh|eq|ls|gr|push|pop|drop|cpush|cpop|cdrop|ctxc|ctxd|ctxs|jif|goto|jump|address|new|del|ptr|val|cast|nil|vargs|vargr|mtxc|mtxd|lock|unlock)\\b'
+		'match': '\\b(sig|call|async|callh|asynch|join|ret|mov|movb|conv|add|sub|mul|div|and|or|xor|neg|lsh|rsh|eq|ls|gr|push|pop|drop|cpush|cpop|cdrop|ctxc|ctxd|ctxs|jif|goto|jump|address|handler|new|del|ptr|val|cast|nil|vargs|vargr|mtxc|mtxd|lock|unlock)\\b'
 		'name': 'keyword.control.operation.intuicio4'
 	}
 	{
